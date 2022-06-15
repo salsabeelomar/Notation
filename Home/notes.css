@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Montserrat:ital,wght@0,400;1,300&family=Nuosu+SIL&family=Rubik:wght@300&family=Staatliches&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-family: "Charis SIL", serif;
+  margin-top: 50px;
+}
+
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.CreationSide {
+  /* margin-left: 2%; */
+  margin-right: 3%;
+  border-right: 2px solid antiquewhite;
+  width: 140px;
+}
+.CreationSide ul {
+  list-style: none;
+  margin-top: 100px;
+}
+.CreationSide ul li button {
+  background: none;
+  border: none;
+  margin: 10px;
+}
+#red:empty {
+  background-color: #ff9b73;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  display: block;
+}
+
+#oringe:empty {
+  background-color: #ffc972;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  display: block;
+}
+#blue:empty {
+  background-color: #43e6fc;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  display: block;
+}
+
+#purple:empty {
+  background-color: #b38bfa;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  display: block;
+}
+
+#green:empty {
+  background-color: #e5f493;
+  width: 15px;
+  height: 15px;
+  display: block;
+  border-radius: 15px;
+}
+main {
+  /* display: flex; */
+  position: relative;
+}
+.popup {
+  /* transform: translate(-70%, -40%) scale(1); */
+  transition: transform 0.4s, 0.4s;
+  position: absolute;
+  left: 270px;
+  top: 15%;
+  z-index: 1;
+  border: 5px solid white;
+  border-radius: 10px;
+  width: 300px;
+  height: 300px;
+  padding: 25px;
+}
+.close {
+  right: -10px;
+  position: absolute;
+  border-radius: 20px;
+  border: none;
+  top: -8px;
+  width: 35px;
+  height: 35px;
+  color: rgb(236 129 86 / 73%);
+  background-color: white;
+}
+.borderElements {
+  border: none;
+  border-radius: 6px;
+  margin: 5px;
+  padding: 5px;
+  width: 245px;
+}
+
+.addNote {
+  background-color: white;
+  border-radius: 15px;
+  width: 100px;
+  height: 25px;
+  position: relative;
+  left: 4.2em;
+  top: 3em;
+}
+#NodeBar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 35px;
+}
+.diplayedNote {
+  min-width: 230px;
+  max-width: 300px;
+  height: 230px;
+  margin: 35px 15px;
+  padding: 15px;
+  border-radius: 15px;
+  position: relative;
+}
+.fa-edit:before,
+.fa-pen-to-square:before {
+  content: "\f044";
+  position: absolute;
+  left: 192px;
+  top: 13px;
+}
