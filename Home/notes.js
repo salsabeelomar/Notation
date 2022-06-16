@@ -177,7 +177,7 @@ oringe.addEventListener("click", ()=>{
     //   }
     // })
      const saveBtn= note.getElementsByClassName("saveBtn")[0]
-     saveBtn.style.display = "block";
+     SVGMaskElementBtn.style.display = "block";
    
     saveBtn.addEventListener("click", () => {
       localSto.forEach((element) => {
