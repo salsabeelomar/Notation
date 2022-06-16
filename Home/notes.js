@@ -132,8 +132,14 @@ oringe.addEventListener("click", ()=>{
   
         deleteIcon.innerHTML = `<i class="fa-solid fa-trash"></i>`;
         deleteIcon.addEventListener("click", deleteNote);
+        deleteIcon.setAttribute("class","deleteBtn")
   
-        containerDiv.append(editIcon, titel, content, deleteIcon);
+        const saveBtn = document.createElement("button");
+        saveBtn.setAttribute("class","saveBtn")
+        saveBtn.textContent = "save";
+        saveBtn.style.display="none"
+       
+        containerDiv.append(editIcon, titel, content, deleteIcon,saveBtn);
         NodeBar.appendChild(containerDiv);
       });
     }
@@ -161,17 +167,18 @@ oringe.addEventListener("click", ()=>{
     const note = ele.target.parentElement;
     let title = note.getElementsByTagName("h2")[0].textContent;
     note.getElementsByTagName("h2")[0].setAttribute("contenteditable", true);
-  
+
     note.getElementsByTagName("p")[0].setAttribute("contenteditable", true);
     let localSto = JSON.parse(localStorage.getItem("Notes"));
-    const saveBtn = document.createElement("button");
+
     // document.addEventListener("click", (element)=>{
     //   if (element.target!=note.childNotes){
     //     console.log("shiu")
     //   }
     // })
-    saveBtn.textContent = "save";
-    note.appendChild(saveBtn);
+     const saveBtn= note.getElementsByClassName("saveBtn")[0]
+     saveBtn.style.display = "block";
+   
     saveBtn.addEventListener("click", () => {
       localSto.forEach((element) => {
         if (element.Title === title) {
