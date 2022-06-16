@@ -113,25 +113,75 @@ oringe.addEventListener("click", ()=>{
   }
   displayLocalStorgeNotes()
 
-function displayLocalStorgeNotes(){
-   let localItem =JSON.parse(localStorage.getItem("Notes"))
-   localItem.forEach(element => {
-    const containerDiv=document.createElement("div")
-    containerDiv.setAttribute("class", "diplayedNote")
-    containerDiv.style.backgroundColor=element.color
-    const editIcon = document.createElement("i")
-    editIcon.setAttribute("class", "fa-solid fa-pen-to-square")
-    const titel=document.createElement("h2")
-    titel.textContent=element.Title
-    const content=document.createElement("p")
-    content.textContent=element.Contain
-    containerDiv.append(editIcon,titel,content)
-    NodeBar.appendChild(containerDiv)
-   
-   });
- 
 
+  function displayLocalStorgeNotes() {
+    if (localStorage.getItem("Notes") != null) {
+      let localItem = JSON.parse(localStorage.getItem("Notes"));
+      localItem.forEach((element) => {
+        const containerDiv = document.createElement("div");
+        containerDiv.setAttribute("class", "diplayedNote");
+        containerDiv.style.backgroundColor = element.color;
+        const editIcon = document.createElement("i");
+        editIcon.setAttribute("class", "fa-solid fa-pen-to-square");
+        editIcon.addEventListener("click", editNote);
+        const titel = document.createElement("h2");
+        titel.textContent = element.Title;
+        const content = document.createElement("p");
+        content.textContent = element.Contain;
+        const deleteIcon = document.createElement("button");
   
-}
-
-{/* <i class="fa-solid fa-circle-heart"></i> */}
+        deleteIcon.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+        deleteIcon.addEventListener("click", deleteNote);
+  
+        containerDiv.append(editIcon, titel, content, deleteIcon);
+        NodeBar.appendChild(containerDiv);
+      });
+    }
+  }
+  
+  function deleteNote(ele) {
+    const item = ele.target.parentElement.parentElement;
+    let local = JSON.parse(localStorage.getItem("Notes"));
+    console.log(local);
+    local.forEach((element) => {
+      if (element.Title === item.getElementsByTagName("h2")[0].textContent) {
+        local.splice(local.indexOf(element), 1);
+        if (local.lenght == 0) {
+          localStorage.setItem("Notes", []);
+        } else {
+          localStorage.setItem("Notes", JSON.stringify(local));
+        }
+  
+        item.remove();
+      }
+    });
+  }
+  
+  function editNote(ele) {
+    const note = ele.target.parentElement;
+    let title = note.getElementsByTagName("h2")[0].textContent;
+    note.getElementsByTagName("h2")[0].setAttribute("contenteditable", true);
+  
+    note.getElementsByTagName("p")[0].setAttribute("contenteditable", true);
+    let localSto = JSON.parse(localStorage.getItem("Notes"));
+    const saveBtn = document.createElement("button");
+    // document.addEventListener("click", (element)=>{
+    //   if (element.target!=note.childNotes){
+    //     console.log("shiu")
+    //   }
+    // })
+    saveBtn.textContent = "save";
+    note.appendChild(saveBtn);
+    saveBtn.addEventListener("click", () => {
+      localSto.forEach((element) => {
+        if (element.Title === title) {
+          element.Title = note.getElementsByTagName("h2")[0].textContent;
+          element.Contain = note.getElementsByTagName("p")[0].textContent;
+          saveBtn.style.display = "none";
+        } else {
+          console.log(element.Title, title.textContent);
+        }
+        localStorage.setItem("Notes", JSON.stringify(localSto));
+      });
+    });
+  }
