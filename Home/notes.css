@@ -4,30 +4,77 @@
   margin: 0;
   padding: 0;
 }
-h1 {
-  font-family: "Charis SIL", serif;
-  margin-top: 50px;
-}
-
-html {
-  height: 100%;
-}
 body {
   display: flex;
   flex-direction: row;
+  height: 100%;
+  font-family: sans-serif;
+}
+.notes {
+  padding: 20px;
+  border-bottom: 2px solid #dcdcdc;
+  width: 100%;
+}
+/* search div and icon  */
+.search {
+  float: right;
+  position: relative;
+  right: 10%;
+}
+.search input[type="text"] {
+  height: 35px;
+  border: 2px solid #8080806e;
+  border-radius: 8px;
+  padding: 15px;
+}
+.fa-magnifying-glass:before,
+.fa-search:before {
+  content: "\f002";
+  position: absolute;
+  left: 230px;
+  font-size: 12px;
+  color: #a6a0af;
+  top: 12px;
+}
+
+h1 {
+  font-family: sans-serif;
+  margin-top: 15px;
+  font-size: 25px;
+  display: inline;
+}
+.header .fa-solid {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+.header p {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 10px;
+}
+html {
   height: 100%;
 }
 .CreationSide {
   /* margin-left: 2%; */
   margin-right: 3%;
-  border-right: 2px solid antiquewhite;
-  width: 140px;
+  border-right: 2px solid #dadada57;
+  width: 18%;
+  background-color: #dadada57;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  z-index: 1;
 }
 .CreationSide ul {
   list-style: none;
-  margin-top: 100px;
+  margin-top: 90px;
+  margin-left: 15px;
 }
 .CreationSide ul li button {
+  font-weight: bold;
+  font-size: 15px;
   background: none;
   border: none;
   margin: 10px;
@@ -71,11 +118,10 @@ body {
   border-radius: 15px;
 }
 main {
-  /* display: flex; */
   position: relative;
+  margin-left: 250px;
 }
 .popup {
-  /* transform: translate(-70%, -40%) scale(1); */
   transition: transform 0.4s, 0.4s;
   position: absolute;
   left: 270px;
@@ -122,18 +168,57 @@ main {
   margin-top: 35px;
 }
 .diplayedNote {
-  min-width: 230px;
+  min-width: 250px;
   max-width: 300px;
-  height: 230px;
+  height: 250px;
   margin: 35px 15px;
   padding: 15px;
   border-radius: 15px;
   position: relative;
 }
+.diplayedNote p {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.diplayedNote h2 {
+  font-size: 20px;
+  font-family: monospace;
+}
+
 .fa-edit:before,
 .fa-pen-to-square:before {
   content: "\f044";
   position: absolute;
-  left: 192px;
-  top: 13px;
+  left: 218px;
+  color: #2f2b2b82;
+  top: 35px;
+  font-size: 18px;
+}
+.deleteBtn {
+  border: none;
+  position: absolute;
+  top: 14px;
+  left: 175px;
+  font-size: 20px;
+  background-color: transparent;
+}
+.saveBtn {
+  background-color: white;
+  border-radius: 5px;
+  width: 85px;
+  border: none;
+  position: absolute;
+  top: 80%;
+  left: 30%;
+  height: 25px;
+}
+
+.xbtn:before {
+  content: "\f00d";
+  font-size: 20px;
+  position: absolute;
+  top: 0px;
+  left: 45px;
+  color: #2f2b2b82;
 }
