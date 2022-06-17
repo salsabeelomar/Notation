@@ -24,8 +24,11 @@
   noteBtn.addEventListener("click" , ()=>{
     Notecolors.style.display="block"
   });
-
-
+ 
+  noteBtn.addEventListener("dblclick" , ()=>{
+    Notecolors.style.display="none"
+  });
+ 
   red.addEventListener("click", ()=>{
 
     createPopup("#ff9b73") 
@@ -49,9 +52,6 @@ oringe.addEventListener("click", ()=>{
   
     createPopup("#ffc972") 
 })
-
-
-
 
 
 
@@ -116,21 +116,29 @@ oringe.addEventListener("click", ()=>{
 
   function displayLocalStorgeNotes() {
     if (localStorage.getItem("Notes") != null) {
+      
       let localItem = JSON.parse(localStorage.getItem("Notes"));
       localItem.forEach((element) => {
-        const containerDiv = document.createElement("div");
-        containerDiv.setAttribute("class", "diplayedNote");
-        containerDiv.style.backgroundColor = element.color;
+
+        const noteDiv = document.createElement("div");
+        noteDiv.setAttribute("class", "diplayedNote");
+        noteDiv.style.backgroundColor = element.color;
+
         const editIcon = document.createElement("i");
         editIcon.setAttribute("class", "fa-solid fa-pen-to-square");
         editIcon.addEventListener("click", editNote);
+
+        const containerDiv = document.createElement("div");
+        containerDiv.style.paddingLeft= "15px";
+
         const titel = document.createElement("h2");
         titel.textContent = element.Title;
+
         const content = document.createElement("p");
         content.textContent = element.Contain;
         const deleteIcon = document.createElement("button");
   
-        deleteIcon.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+        deleteIcon.innerHTML = `<i class="fa-solid fa-xmark xbtn"></i>`;
         deleteIcon.addEventListener("click", deleteNote);
         deleteIcon.setAttribute("class","deleteBtn")
   
@@ -139,8 +147,10 @@ oringe.addEventListener("click", ()=>{
         saveBtn.textContent = "save";
         saveBtn.style.display="none"
        
-        containerDiv.append(editIcon, titel, content, deleteIcon,saveBtn);
-        NodeBar.appendChild(containerDiv);
+        containerDiv.append( titel, content,saveBtn);
+        noteDiv.append(deleteIcon,editIcon,containerDiv)
+        NodeBar.appendChild(noteDiv);
+
       });
     }
   }
@@ -177,7 +187,7 @@ oringe.addEventListener("click", ()=>{
     //   }
     // })
      const saveBtn= note.getElementsByClassName("saveBtn")[0]
-     SVGMaskElementBtn.style.display = "block";
+     saveBtn.style.display = "block";
    
     saveBtn.addEventListener("click", () => {
       localSto.forEach((element) => {
