@@ -10,29 +10,30 @@ body {
   height: 100%;
   font-family: sans-serif;
 }
-.notes{
+.notes {
   padding: 20px;
   border-bottom: 2px solid #dcdcdc;
   width: 100%;
 }
 /* search div and icon  */
-.search{
+.search {
   float: right;
   position: relative;
   right: 10%;
 }
-.search input[type=text]{
+.search input[type="text"] {
   height: 35px;
   border: 2px solid #8080806e;
   border-radius: 8px;
   padding: 15px;
 }
-.fa-magnifying-glass:before, .fa-search:before {
+.fa-magnifying-glass:before,
+.fa-search:before {
   content: "\f002";
   position: absolute;
   left: 230px;
   font-size: 12px;
-  color:#a6a0af ;
+  color: #a6a0af;
   top: 12px;
 }
 
@@ -42,13 +43,11 @@ h1 {
   font-size: 25px;
   display: inline;
 }
-.header .fa-solid{
+.header .fa-solid {
   margin-top: 15px;
   margin-left: 15px;
-  
-
 }
-.header p{
+.header p {
   font-family: sans-serif;
   font-weight: bold;
   font-size: 20px;
@@ -67,12 +66,11 @@ html {
   overflow: auto;
   position: fixed;
   z-index: 1;
-  
 }
 .CreationSide ul {
   list-style: none;
   margin-top: 90px;
-  margin-left: 15px;;
+  margin-left: 15px;
 }
 .CreationSide ul li button {
   font-weight: bold;
@@ -120,12 +118,10 @@ html {
   border-radius: 15px;
 }
 main {
-
   position: relative;
   margin-left: 250px;
 }
 .popup {
-
   transition: transform 0.4s, 0.4s;
   position: absolute;
   left: 270px;
@@ -136,7 +132,6 @@ main {
   width: 300px;
   height: 300px;
   padding: 25px;
-  
 }
 .close {
   right: -10px;
@@ -181,12 +176,12 @@ main {
   border-radius: 15px;
   position: relative;
 }
-.diplayedNote p{
+.diplayedNote p {
   margin-left: 10px;
   margin-top: 10px;
 }
 
-.diplayedNote h2{
+.diplayedNote h2 {
   font-size: 20px;
   font-family: monospace;
 }
@@ -196,20 +191,19 @@ main {
   content: "\f044";
   position: absolute;
   left: 218px;
-    color: #2f2b2b82;
-    top: 35px;
-    font-size: 18px;
+  color: #2f2b2b82;
+  top: 35px;
+  font-size: 18px;
 }
-.deleteBtn{
+.deleteBtn {
   border: none;
   position: absolute;
   top: 14px;
   left: 175px;
   font-size: 20px;
   background-color: transparent;
-  
 }
-.saveBtn{
+.saveBtn {
   background-color: white;
   border-radius: 5px;
   width: 85px;
@@ -220,7 +214,7 @@ main {
   height: 25px;
 }
 
- .xbtn:before {
+.xbtn:before {
   content: "\f00d";
   font-size: 20px;
   position: absolute;
