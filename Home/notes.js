@@ -2,8 +2,21 @@ const noteBtn = document.getElementById("noteBtn");
 const toDoBtn = document.getElementById("toDoBtn");
 const Notecolors = document.getElementsByClassName("Notecolors")[0];
 const main = document.getElementsByTagName("main")[0];
+const content = document.getElementsByClassName("content")[0];
 const NodeBar = document.getElementById("NodeBar");
+const searchBtn = document.getElementById("searchBtn")
+const searchBar = document.getElementById("searchBar")
+const displayAfterSearch = document.getElementById("displayAfterSearch");
 let LocalStorgeArr = [];
+
+displayAfterSearch.style.display="none"
+displayAfterSearch.addEventListener("click", ()=>{
+  searchBar.style.display="none";
+  NodeBar.style.display="flex";
+  displayAfterSearch.style.display="none"
+  searchBtn.value=""
+
+})
 
 const ColorsDiv = document.createElement("div");
 const purple = document.createElement("button");
@@ -104,38 +117,42 @@ function displayLocalStorgeNotes() {
   if (localStorage.getItem("Notes") != null) {
     let localItem = JSON.parse(localStorage.getItem("Notes"));
     localItem.forEach((element) => {
-      const noteDiv = document.createElement("div");
-      noteDiv.setAttribute("class", "diplayedNote");
-      noteDiv.style.backgroundColor = element.color;
-
-      const editIcon = document.createElement("i");
-      editIcon.setAttribute("class", "fa-solid fa-pen-to-square");
-      editIcon.addEventListener("click", editNote);
-
-      const containerDiv = document.createElement("div");
-      containerDiv.style.paddingLeft = "15px";
-
-      const titel = document.createElement("h2");
-      titel.textContent = element.Title;
-
-      const content = document.createElement("p");
-      content.textContent = element.Contain;
-      const deleteIcon = document.createElement("button");
-
-      deleteIcon.innerHTML = `<i class="fa-solid fa-xmark xbtn"></i>`;
-      deleteIcon.addEventListener("click", deleteNote);
-      deleteIcon.setAttribute("class", "deleteBtn");
-
-      const saveBtn = document.createElement("button");
-      saveBtn.setAttribute("class", "saveBtn");
-      saveBtn.textContent = "save";
-      saveBtn.style.display = "none";
-
-      containerDiv.append(titel, content, saveBtn);
-      noteDiv.append(deleteIcon, editIcon, containerDiv);
-      NodeBar.appendChild(noteDiv);
+      createNote(element,NodeBar)
+     
     });
   }
+}
+function createNote(element,notePlace){
+  const noteDiv = document.createElement("div");
+  noteDiv.setAttribute("class", "diplayedNote");
+  noteDiv.style.backgroundColor = element.color;
+
+  const editIcon = document.createElement("i");
+  editIcon.setAttribute("class", "fa-solid fa-pen-to-square");
+  editIcon.addEventListener("click", editNote);
+
+  const containerDiv = document.createElement("div");
+  containerDiv.style.paddingLeft = "15px";
+
+  const titel = document.createElement("h2");
+  titel.textContent = element.Title;
+
+  const content = document.createElement("p");
+  content.textContent = element.Contain;
+  const deleteIcon = document.createElement("button");
+
+  deleteIcon.innerHTML = `<i class="fa-solid fa-xmark xbtn"></i>`;
+  deleteIcon.addEventListener("click", deleteNote);
+  deleteIcon.setAttribute("class", "deleteBtn");
+
+  const saveBtn = document.createElement("button");
+  saveBtn.setAttribute("class", "saveBtn");
+  saveBtn.textContent = "save";
+  saveBtn.style.display = "none";
+
+  containerDiv.append(titel, content, saveBtn);
+  noteDiv.append(deleteIcon, editIcon, containerDiv);
+  notePlace.appendChild(noteDiv);
 }
 
 function deleteNote(ele) {
@@ -165,7 +182,9 @@ function editNote(ele) {
   let localSto = JSON.parse(localStorage.getItem("Notes"));
 
   // document.addEventListener("click", (element)=>{
+    
   //   if (element.target!=note.childNotes){
+  //     element.preventDefault();
   //     console.log("shiu")
   //   }
   // })
@@ -185,3 +204,26 @@ function editNote(ele) {
     });
   });
 }
+
+
+searchBtn.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+        event.preventDefault();
+    let localItem = JSON.parse(localStorage.getItem("Notes"));
+     searchBar.replaceChildren(); 
+      NodeBar.style.display="none" 
+
+      displayAfterSearch.style.display="block"
+     localItem.forEach(element => {
+      if(element.Title==searchBtn.value){
+      
+        
+        searchBar.style.display="flex";
+      
+      
+        createNote(element,searchBar);
+      }     
+     });
+  }
+
+})
