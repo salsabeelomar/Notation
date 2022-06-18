@@ -21,7 +21,7 @@ body {
   position: relative;
   right: 10%;
 }
-.search input[type="text"] {
+.search input[type="search"] {
   height: 35px;
   border: 2px solid #8080806e;
   border-radius: 8px;
@@ -120,6 +120,7 @@ html {
 main {
   position: relative;
   margin-left: 250px;
+  width:100% ;
 }
 .popup {
   transition: transform 0.4s, 0.4s;
@@ -159,7 +160,7 @@ main {
   height: 25px;
   position: relative;
   left: 4.2em;
-  top: 3em;
+  top: 2.5em;
 }
 #NodeBar {
   display: flex;
@@ -168,8 +169,7 @@ main {
   margin-top: 35px;
 }
 .diplayedNote {
-  min-width: 250px;
-  max-width: 300px;
+  width: 250px;
   height: 250px;
   margin: 35px 15px;
   padding: 15px;
@@ -221,4 +221,17 @@ main {
   top: 0px;
   left: 45px;
   color: #2f2b2b82;
+}
+
+#displayAfterSearch{
+  margin: 15px;
+  width: 150px;
+  height: 35px;
+  background-color: #dadada8a;
+  border: none;
+  border-radius: 9px;
+
+}
+h2:focus , input:focus, p:focus{
+  outline: none;
 }
