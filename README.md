@@ -1,2 +1,2 @@
 # Notation
-live link ["https://salsabeelomar.github.io/Notation/Home/notes.html"]
+- [LIVE LINK FOR NOTATION](https://salsabeelomar.github.io/Notation/Home/notes.html)
